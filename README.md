@@ -7,7 +7,7 @@ Grupo:
 - Davi Ramos Soares
 - Rafael Ramalho Pessoa Albuquerque de Brito
 
-## Estrutura
+## Pastas
 
 - `etapa1/`: ULA da Mic-1 (APS 01)
 - `etapa2/`: ULA com deslocador e caminho de dados com registradores (APS 02)
