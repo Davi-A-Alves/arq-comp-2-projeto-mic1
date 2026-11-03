@@ -1,8 +1,5 @@
 # Etapa 2 - Tarefa 1: ULA de 8 bits de controle com deslocador, N e Z.
 # Instrucao: SLL8 SRA1 F0 F1 ENA ENB INVA INC
-# Uso: python etapa2_tarefa1.py [programa] [log]
-
-import sys
 
 MASCARA = 0xFFFFFFFF  # deixa o numero com 32 bits
 
@@ -63,30 +60,11 @@ def ula(ir, a, b):
     return a, b, s, sd, n, z, vai_um
 
 
-def valida(ir):
-    # so aceita 8 digitos 0/1 e nao deixa SLL8 e SRA1 juntos
-    if len(ir) != 8:
-        return False
-    for c in ir:
-        if c != "0" and c != "1":
-            return False
-    if ir[0] == "1" and ir[1] == "1":
-        return False
-    return True
-
-
-nome_programa = "programa_etapa2_tarefa1.txt"
-nome_log = "log_etapa2_tarefa1.txt"
-if len(sys.argv) > 1:
-    nome_programa = sys.argv[1]
-if len(sys.argv) > 2:
-    nome_log = sys.argv[2]
-
-arquivo = open(nome_programa)
+arquivo = open("programa_etapa2_tarefa1.txt")
 linhas = arquivo.readlines()
 arquivo.close()
 
-log = open(nome_log, "w")
+log = open("log_etapa2_tarefa1.txt", "w")
 log.write("b = " + em_binario(B) + "\n")
 log.write("a = " + em_binario(A) + "\n\n")
 log.write("Start of Program\n")
@@ -104,7 +82,7 @@ while True:
 
     ir = linhas[pc - 1].strip()
     log.write("IR = " + ir + "\n")
-    if not valida(ir):
+    if ir[0] == "1" and ir[1] == "1":  # SLL8 e SRA1 nao podem ficar juntos
         log.write("> Error, invalid control signals.\n")
         continue
 
@@ -118,4 +96,4 @@ while True:
     log.write("co = " + str(vai_um) + "\n")
 
 log.close()
-print("Pronto! Veja o arquivo " + nome_log)
+print("Pronto! Veja o arquivo log_etapa2_tarefa1.txt")

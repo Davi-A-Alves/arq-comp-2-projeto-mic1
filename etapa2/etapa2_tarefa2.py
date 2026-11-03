@@ -1,8 +1,5 @@
 # Etapa 2 - Tarefa 2: caminho de dados da Mic-1 (registradores + barramentos B e C).
 # Instrucao de 21 bits: 8 (ULA) + 9 (barramento C) + 4 (barramento B)
-# Uso: python etapa2_tarefa2.py [programa] [registradores] [log]
-
-import sys
 
 MASCARA = 0xFFFFFFFF
 
@@ -81,8 +78,6 @@ def nomes_c_ativos(bits):
     for i in range(9):
         if bits[i] == "1":
             lista.append(NOMES_C[i])
-    if len(lista) == 0:
-        return "none"
     return ", ".join(lista)
 
 
@@ -94,45 +89,22 @@ def escreve_regs(log, reg):
             log.write(nome + " = " + em_binario(reg[nome], 32) + "\n")
 
 
-def valida(ir):
-    # 21 digitos 0/1, SLL8 e SRA1 nao juntos, decodificador B de 0 a 8
-    if len(ir) != 21:
-        return False
-    for c in ir:
-        if c != "0" and c != "1":
-            return False
-    if ir[0] == "1" and ir[1] == "1":
-        return False
-    if int(ir[17:21], 2) > 8:
-        return False
-    return True
-
-
-nome_programa = "programa_etapa2_tarefa2.txt"
-nome_regs = "registradores_etapa2_tarefa2.txt"
-nome_log = "log_etapa2_tarefa2.txt"
-if len(sys.argv) > 1:
-    nome_programa = sys.argv[1]
-if len(sys.argv) > 2:
-    nome_regs = sys.argv[2]
-if len(sys.argv) > 3:
-    nome_log = sys.argv[3]
 
 # le o programa
-arquivo = open(nome_programa)
+arquivo = open("programa_etapa2_tarefa2.txt")
 linhas = arquivo.readlines()
 arquivo.close()
 
 # le o estado inicial dos registradores (formato "nome = valor")
 reg = {}
-arquivo = open(nome_regs)
+arquivo = open("registradores_etapa2_tarefa2.txt")
 for linha in arquivo.readlines():
     if "=" in linha:
         partes = linha.split("=")
         reg[partes[0].strip().lower()] = int(partes[1].strip(), 2)
 arquivo.close()
 
-log = open(nome_log, "w")
+log = open("log_etapa2_tarefa2.txt", "w")
 for linha in linhas:
     if linha.strip() != "":
         log.write(linha.strip() + "\n")
@@ -155,7 +127,7 @@ while True:
     ciclo = ciclo + 1
     log.write("Cycle " + str(ciclo) + "\n")
 
-    if not valida(ir):
+    if ir[0] == "1" and ir[1] == "1":  # SLL8 e SRA1 nao podem ficar juntos
         log.write("ir = " + ir + "\n")
         log.write("> Error, invalid control signals.\n")
         continue
@@ -179,4 +151,4 @@ while True:
     escreve_regs(log, reg)
 
 log.close()
-print("Pronto! Veja o arquivo " + nome_log)
+print("Pronto! Veja o arquivo log_etapa2_tarefa2.txt")
