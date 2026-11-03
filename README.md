@@ -17,9 +17,4 @@ O programa lê o `programa_etapa1.txt` (uma instrução de 6 bits por linha: F0 
 
 - `ula.py`: o código
 - `programa_etapa1.txt`: instruções de teste que a professora passou
-- `saída_etapa1.txt`: log que a professora passou como resposta esperada
 - `log_execucao_etapa1.txt`: log que o nosso código gera
-
-## Observação
-
-Na linha 1 do `programa_etapa1.txt` está `111110`, mas o `saída_etapa1.txt` mostra `IR = 111100` nesse ciclo. Nosso código segue o arquivo de entrada. Trocando a linha 1 para `111100`, o log fica igual ao da professora.
