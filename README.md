@@ -1,24 +1,25 @@
-# Arquitetura de Computadores II - Projeto 2026.2 - Etapa 1 (APS 01)
+# Projeto Mic-1 - Arquitetura de Computadores II (UFPB)
 
-ULA da Mic-1 simulada em Python.
+Etapa 1 do projeto: simulação da ULA da Mic-1 em Python.
 
 Grupo:
 - Davi Araujo Alves
 - Davi Ramos Soares
 - Rafael Ramalho Pessoa Albuquerque de Brito
 
-## Como executar
-python ula.py
+## Como rodar
 
-O programa le `programa_etapa1.txt` (uma instrucao de 6 bits por linha: F0 F1 ENA ENB INVA INC)
-e escreve o log em `log_execucao_etapa1.txt`.
+    python ula.py
+
+O programa lê o `programa_etapa1.txt` (uma instrução de 6 bits por linha: F0 F1 ENA ENB INVA INC) e escreve o resultado de cada linha no `log_execucao_etapa1.txt`.
 
 ## Arquivos
-- ula.py: codigo
-- programa_etapa1.txt: instrucoes de teste fornecidas pela professora
-- log_execucao_etapa1.txt: log gerado pelo codigo
-- saída_etapa1.txt: saida esperada fornecida pela professora
 
-## Observacao
-Na linha 1, o programa de teste tem `111110`, mas a saida esperada da professora mostra `IR = 111100`.
-O codigo segue o arquivo de entrada. Com `111100` o log fica identico ao esperado.
+- `ula.py`: o código
+- `programa_etapa1.txt`: instruções de teste que a professora passou
+- `saída_etapa1.txt`: log que a professora passou como resposta esperada
+- `log_execucao_etapa1.txt`: log que o nosso código gera
+
+## Observação
+
+Na linha 1 do `programa_etapa1.txt` está `111110`, mas o `saída_etapa1.txt` mostra `IR = 111100` nesse ciclo. Nosso código segue o arquivo de entrada. Trocando a linha 1 para `111100`, o log fica igual ao da professora.
