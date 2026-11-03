@@ -1,20 +1,26 @@
 # Projeto Mic-1 - Arquitetura de Computadores II (UFPB)
 
-Etapa 1 do projeto: simulação da ULA da Mic-1 em Python.
+Simulação da Mic-1 em Python, feita por etapas.
 
 Grupo:
 - Davi Araujo Alves
 - Davi Ramos Soares
 - Rafael Ramalho Pessoa Albuquerque de Brito
 
+## Estrutura
+
+- `etapa1/`: ULA da Mic-1 (APS 01)
+- `etapa2/`: ULA com deslocador e caminho de dados com registradores (APS 02)
+
 ## Como rodar
+
+Etapa 1 (dentro da pasta `etapa1`):
 
     python ula.py
 
-O programa lê o `programa_etapa1.txt` (uma instrução de 6 bits por linha: F0 F1 ENA ENB INVA INC) e escreve o resultado de cada linha no `log_execucao_etapa1.txt`.
+Etapa 2 (dentro da pasta `etapa2`):
 
-## Arquivos
+    python etapa2_tarefa1.py
+    python etapa2_tarefa2.py
 
-- `ula.py`: o código
-- `programa_etapa1.txt`: instruções de teste que a professora passou
-- `log_execucao_etapa1.txt`: log que o nosso código gera
+Cada programa lê o arquivo `programa_...txt` da própria pasta e escreve o log em um `.txt` na mesma pasta.
